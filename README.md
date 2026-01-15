@@ -24,3 +24,12 @@ Sample CSV exports from INDICIA queries:
 ## Purpose
 
 These scripts and outputs facilitate data formatting for integration of external data into the eBMS Transect Survey data in INDICIA.
+
+
+## INDICIA further documentation
+
+1.	[Indicia 9.3 documentation](https://indicia-docs.readthedocs.io/en/latest/contents.html)
+2.	[Table](https://indicia-docs.readthedocs.io/en/latest/developing/data-model/tables.html#La)
+3.	[Location](https://indicia-docs.readthedocs.io/en/latest/developing/data-model/tables.html#locations)
+3.	[Sample](https://indicia-docs.readthedocs.io/en/latest/developing/data-model/tables.html#samples)
+3.	[Occurrence](https://indicia-docs.readthedocs.io/en/latest/developing/data-model/tables.html#occurrences)
