@@ -1,0 +1,2 @@
+"id","title","owner_id","description","website_id","created_on","created_by_id","updated_on","updated_by_id","deleted","parent_id","auto_accept","auto_accept_max_difficulty","core_validation_rules","auto_accept_taxa_filters"
+"562","EBMS Transects","","Transect data for EBMS.","118","2016-11-11 10:00:43","1","2020-07-10 09:15:11","1","false","","false","","{""occurrence"":[],""sample"":[]}",""

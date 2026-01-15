@@ -19,7 +19,7 @@ SAMPLE AND SAMPLE ATTRIBUTES
 OPTIMISED SUBSET
 */
 SELECT 
-sav_rn.text_value as "Recorder Name",
+'Lastname, Firstname' as "Recorder Name",
 sav_st.text_value as "Start Time",
 sav_et.text_value as "End Time",
 sav_sun.int_value as "perct_Sun",

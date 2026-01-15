@@ -40,7 +40,7 @@ FROM
                 cof.survey_id = 562 AND 
                 cof.training = FALSE AND
                 cof.location_id IN (SELECT id FROM locations WHERE id = 370832 OR parent_id = 370832)) 
-    LIMIT 1000) as occ
+    LIMIT 100) as occ
     LEFT JOIN occurrence_attribute_values AS oav_bls ON oav_bls.occurrence_id = occ.id AND oav_bls.occurrence_attribute_id = 293
     LEFT JOIN cache_termlists_terms tltbls on tltbls.id = oav_bls.int_value
     LEFT JOIN occurrence_attribute_values AS oav_abc ON oav_abc.occurrence_id = occ.id AND oav_abc.occurrence_attribute_id = 780
