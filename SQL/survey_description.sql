@@ -1,8 +1,8 @@
--- SURVEY and WEBSITE ID
+-- EBMS WEBSITE
+SELECT * FROM websites WHERE id = 118;
 
-SELECT
-surveys.*
-FROM surveys
-WHERE 
-website_id = 118 AND    -- filter for the EBMS project
-id = 562;               -- filter for EBMS Transects
+-- ALL EBMS SURVEYS
+SELECT * FROM surveys WHERE website_id = 118;
+
+-- EBMS TRANSECT SURVEY (equivalent to your query)
+SELECT * FROM surveys WHERE id = 562;
