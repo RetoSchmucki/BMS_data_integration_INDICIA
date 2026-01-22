@@ -1,9 +1,12 @@
+-- LIST ALL OCCURRENCE ATTRIBUTES WITH POSSIBLE TERMS (compact ouput)
+
 SELECT DISTINCT
    oa.caption,			-- name of the attribute
+   oa.description,      -- description of attribute
    oa.id,				-- id to link attribute value to location
    oa.data_type,		-- format of the attribute (T:text, I:integer, float:numeric, L:termlist, B:boolean)
    oa.termlist_id,		-- id in the term list (termlist)
-   ctt.term,            -- term
+   STRING_AGG(ctt.term, ', ' ORDER BY ctt.sort_order), -- list of terms
    oa.created_on
 FROM
    occurrence_attributes AS oa		                                                    -- the reference table for location attributes
@@ -11,8 +14,8 @@ FROM
           AND oaw.website_id = 118													    -- filter for the EBMS project
 		  AND oaw.restrict_to_survey_id = 562
     LEFT JOIN cache_termlists_terms AS ctt ON ctt.termlist_id = oa.termlist_id
+GROUP BY oa.caption, oa.description, oa.id, oa.data_type, oa.termlist_id, oa.created_on
 ORDER BY oa.id;
-
 
 /*
 OCCURRENCE AND OCCURRENCE ATTRIBUTES

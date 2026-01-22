@@ -1,17 +1,22 @@
+-- LIST ALL SAMPLE ATTRIBUTES WITH POSSIBLE TERMS (compact ouput)
+
 SELECT DISTINCT
-   la.caption,			-- name of the attribute
-   la.id,				-- id to link attribute value to location
-   la.data_type,		-- format of the attribute (T:text, I:integer, float:numeric, L:termlist, B:boolean)
-   la.termlist_id,		-- id in the term list (termlist)
-   ctt.term,            -- term
-   la.created_on
+   sa.caption,			-- name of the attribute
+   sa.description,      -- description of attribute
+   sa.id,				-- id to link attribute value to location
+   sa.data_type,		-- format of the attribute (T:text, I:integer, float:numeric, L:termlist, B:boolean)
+   sa.termlist_id,		-- id in the term list (termlist)
+   STRING_AGG(ctt.term, ', ' ORDER BY ctt.sort_order), -- list of terms 
+   sa.created_on
 FROM
-   sample_attributes AS la		                                                    -- the reference table for location attributes
-    JOIN sample_attributes_websites AS law ON law.sample_attribute_id = la.id		-- define the key to JOIN the tables
-          AND law.website_id = 118													    -- filter for the EBMS project
-		  AND law.restrict_to_survey_id = 562
-    LEFT JOIN cache_termlists_terms AS ctt ON ctt.termlist_id = la.termlist_id
-ORDER BY la.id;
+   sample_attributes AS sa		                                                    -- the reference table for location attributes
+    JOIN sample_attributes_websites AS saw ON saw.sample_attribute_id = sa.id		-- define the key to JOIN the tables
+          AND saw.website_id = 118													    -- filter for the EBMS project
+		  AND saw.restrict_to_survey_id = 562
+    LEFT JOIN cache_termlists_terms AS ctt ON ctt.termlist_id = sa.termlist_id
+GROUP BY sa.caption, sa.description, sa.id, sa.data_type, sa.termlist_id, sa.created_on
+ORDER BY sa.id;
+
 
 
 /*

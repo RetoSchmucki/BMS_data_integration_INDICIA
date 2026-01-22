@@ -1,9 +1,12 @@
-SELECT DISTINCT
+-- LIST ALL LOCATION ATTRIBUTES WITH POSSIBLE TERMS (compact ouput)
+
+SELECT
    la.caption,			-- name of the attribute
+   la.description,      -- description of attribute
    la.id,				-- id to link attribute value to location
    la.data_type,		-- format of the attribute (T:text, I:integer, float:numeric, L:termlist, B:boolean)
    la.termlist_id,		-- id in the term list (termlist)
-   ctt.term,            -- term
+   STRING_AGG(ctt.term, ', ' ORDER BY ctt.sort_order), -- list of terms
    la.created_on
 FROM
    location_attributes AS la		                                                    -- the reference table for location attributes
@@ -11,6 +14,7 @@ FROM
           AND law.website_id = 118													    -- filter for the EBMS project
 		  AND law.restrict_to_survey_id = 562
     LEFT JOIN cache_termlists_terms AS ctt ON ctt.termlist_id = la.termlist_id
+GROUP BY la.caption, la.description, la.id, la.data_type, la.termlist_id, la.created_on
 ORDER BY la.id;
 
 
